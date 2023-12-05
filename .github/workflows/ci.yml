@@ -1,0 +1,16 @@
+name: 'Continuous Integration'
+on: [ push, workflow_dispatch ]
+env:
+  GRADLE_OPTS: >-
+      -Dorg.gradle.project.org.alfresco.maven.nexus.username=${{ secrets.ALFRESCO_NEXUS_USERNAME }}
+      -Dorg.gradle.project.org.alfresco.maven.nexus.password=${{ secrets.ALFRESCO_NEXUS_PASSWORD }}
+jobs:
+  docker-integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker image tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          cache-read-only: false
+          arguments: composeUp -i

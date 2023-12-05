@@ -1,0 +1,3 @@
+rootProject.name = 'alfresco-jdk11'
+
+include 'alfresco'
