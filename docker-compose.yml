@@ -21,7 +21,7 @@ services:
     volumes:
       - alfresco:/opt/alfresco/alf_data
   postgresql:
-    image: xenit/postgres:latest
+    image: docker.io/xenit/postgres:13
     volumes:
     - postgres:/var/lib/postgresql/data
     environment:
